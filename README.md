@@ -1,8 +1,8 @@
-# fracture_MobileNetV3.py
+# Metallography_MobileNetV3.py
 
 ## 概要
 
-金属破断面の電子顕微鏡画像を読み込み、Dimple、Striation、River、Rock、Fan-Shapedのどれかを推論するプログラムです。学習はKerasライブラリのMobileNetV3モデルで行っています。
+金属組織画像を読み込み、Austenite、Ferrite、Ferrite_Perlite、Martensite、Perliteのどれかを推論するプログラムです。学習はKerasライブラリのMobileNetV3モデルで行っています。
 
 ## 動作環境
 
@@ -10,13 +10,13 @@
 
 ## 使い方
 
-- fracture_MobileNetV3.py、model.h5、labels.txtを適当なフォルダ（例えば c:\python）に置きます。
-　さらに破断面の画像ファイルも適当なフォルダ（例えば、c:\data）に置きます。
+- Metallography_MobileNetV3.py、model.h5、labels.txtを適当なフォルダ（例えば c:\python）に置きます。
+　さらに組織画像のファイルも適当なフォルダ（例えば、c:\data）に置きます。
 
-- fracture_MobileNetV3.pyの15と19行目について、model.h5とlabels.txtのフルパスを編集します。
+- Metallography_MobileNetV3.pyの15と19行目について、model.h5とlabels.txtのフルパスを編集します。
 　さらに23行目について、破断面の画像ファイルのフォルダ名を編集します。
 
-- fracture_MobileNetV3.pyを実行します。不足分のライブラリがあればインストールしてください。
+- Metallography_MobileNetV3.pyを実行します。不足分のライブラリがあればインストールしてください。
 
 
 ## ご利用に関して
