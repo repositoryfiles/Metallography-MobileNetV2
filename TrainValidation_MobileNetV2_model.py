@@ -91,12 +91,16 @@ X = np.array(X)
 y = np.array(y)
 
 X = X.astype("float32")
+
+# preprocess_input 前のXの最大値と最小値の表示
 print("Xmax and Xmin before preprocess_input")
 print(X.max())
 print(X.min())
 
+# preprocess_input：画像の前処理（Xの値を0～255からMobilenetV2に適する-1～+1に変更）
 x = preprocess_input(X)
 
+# preprocess_input 後のXの最大値と最小値の表示
 print("Xmax and Xmin after preprocess_input")
 print(X.max())
 print(X.min())
@@ -119,7 +123,7 @@ y_valid = to_categorical(y_valid, nb_classes)
 model = build_model()
 
 train_datagen = ImageDataGenerator(
-    # rescale=1.0 / 255,  # 画素値の正規化（0～255を0～1に）
+    # 水増しのパラメータは、学習データと検証データの正解率をみながら適宜変更する
     # width_shift_range=0.2,
     # height_shift_range=0.2,
     zoom_range=0.2,
@@ -132,7 +136,6 @@ train_datagen = ImageDataGenerator(
 
 train_datagen.fit(X_train)
 
-# valid_datagen = ImageDataGenerator(rescale=1.0 / 255)
 valid_datagen = ImageDataGenerator()
 valid_datagen.fit(X_valid)
 
@@ -144,7 +147,7 @@ csv_log = CSVLogger(ResultFileName + ".csv")
 # モデルの学習が進まなくなったら学習終了
 early_stopping = EarlyStopping(monitor="val_loss", patience=5, verbose=1)
 
-# 学習率を減らす
+# モデルの学習が遅くなってきたら学習率を小さくする
 reduce_lr = ReduceLROnPlateau(
     monitor="val_loss", factor=0.5, patience=2, verbose=1
 )
@@ -159,6 +162,7 @@ modelCheckpoint = ModelCheckpoint(
     period=1,
 )
 
+# モデルの学習
 history = model.fit(
     train_datagen.flow(X_train, y_train, batch_size=BATCH_SIZE),
     epochs=NB_EPOCH,
@@ -169,7 +173,7 @@ history = model.fit(
     callbacks=[csv_log, early_stopping, reduce_lr, modelCheckpoint],
 )
 
-# 結果のグラフ表示
+# 学習結果のグラフ表示
 acc = history.history["accuracy"]
 val_acc = history.history["val_accuracy"]
 loss = history.history["loss"]
