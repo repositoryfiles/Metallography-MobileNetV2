@@ -109,9 +109,6 @@ data_num = len(X)
 steps_per_epoch = data_num * (1 - VALID_SIZE) / BATCH_SIZE
 print(steps_per_epoch)
 
-valid_scores = []
-models = []
-
 X_train, X_valid, y_train, y_valid = train_test_split(
     X, y, test_size=VALID_SIZE, random_state=1
 )
