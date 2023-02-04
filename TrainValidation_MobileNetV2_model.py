@@ -98,7 +98,7 @@ print(X.max())
 print(X.min())
 
 # preprocess_input：画像の前処理（Xの値を0～255からMobilenetV2に適する-1～+1に変更）
-x = preprocess_input(X)
+X = preprocess_input(X)
 
 # preprocess_input 後のXの最大値と最小値の表示
 print("Xmax and Xmin after preprocess_input")
