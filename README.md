@@ -1,4 +1,4 @@
-# Metallography_MobileNetV3.py
+# Metallography_MobileNetV2.py
 
 ## 概要
 
@@ -10,13 +10,13 @@
 
 ## 使い方
 
-- Metallography_MobileNetV3.py、model.h5、labels.txtを適当なフォルダ（例えば c:\python）に置きます。
+- Metallography_MobileNetV2.py、model.h5、labels.txtを適当なフォルダ（例えば c:\python）に置きます。
 　さらに組織画像のファイルも適当なフォルダ（例えば、c:\data）に置きます。
 
-- Metallography_MobileNetV3.pyの15と19行目について、model.h5とlabels.txtのフルパスを編集します。
+- Metallography_MobileNetV2.pyの15と19行目について、model.h5とlabels.txtのフルパスを編集します。
 　さらに23行目について、破断面の画像ファイルのフォルダ名を編集します。
 
-- Metallography_MobileNetV3.pyを実行します。不足分のライブラリがあればインストールしてください。
+- Metallography_MobileNetV2.pyを実行します。不足分のライブラリがあればインストールしてください。
 
 
 ## ご利用に関して
